@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/_mainLayout}">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Eflyer</title>
+   </head>
+   <body>
+   <div layout:fragment="content">
+
+      <div class="modal" id="product" tabindex="-1" role="dialog" aria-labelledby="product-modal-label" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="product-modal-label">Product Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="preview-pic">
+                              <img src="" alt="Product Image" id="modal-product-image">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <h3 class="product-title" id="modal-product-name"></h3>
+                           <p class="product-description" id="modal-product-description"></p>
+                           <h4 class="price">Current Price: <span id="modal-product-price"></span></h4>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button class="cart-btn btn btn-outline-success" type="button" data-id="">Add to Cart</button>
+                  <button class="back btn btn-outline-danger" type="button" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- fashion section start -->
+      <div class="fashion_section">
+         <div id="main_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <h1 class="fashion_taital">Fashion</h1>
+                     <div class="fashion_section_2">
+                        <div id="product-list-fashion" class="row ">
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- fashion section end -->
+      <!-- electronic section start -->
+      <div class="fashion_section">
+         <div id="electronic_main_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <h1 class="fashion_taital">Technology</h1>
+                     <div class="fashion_section_2">
+                        <div id="product-list-technology" class="row">
+
+                        </div>
+                  </div>
+               </div>
+               </div>
+               </div>
+         </div>
+      </div>
+      <!-- electronic section end -->
+   </div>
+   </body>
+</html>

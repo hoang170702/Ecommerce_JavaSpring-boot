@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/_adminLayout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Manage Categories</title>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to take this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelAction">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmAction">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="container">
+
+            <form id="frmCategory" name="frmCategory">
+
+                <div class="form-group">
+                    <label>Name Category</label>
+                    <input type="text" name="nameCategory" id="nameCategory" class="form-control" placeholder="Category Name" size="30px" required>
+                </div>
+
+                <div class="form-group" align="right">
+                    <button type="submit" class="btn btn-info" id="save" >Add</button>
+                    <button type="button" class="btn btn-warning" id="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="panel-body">
+            <table  class="table table-bordered" cellpadding="0" cellspacing="0" width="100%">
+                <thead>
+                <tr style="text-align: center; background-color: yellow">
+                    <th>ID Category</th>
+                    <th>Name Category</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="lst-category">
+
+                </tbody>
+            </table>
+            <div class="pagination" style="text-align: center;">
+                <button id="prevPageBtn" class="btn btn-primary">Previous</button>
+                <span id="currentPage" style="margin: 0 10px;"></span>
+                <button id="nextPageBtn" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="/ajax/admin/categories.js"></script>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/_adminLayout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Manage User</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div layout:fragment="content">
+<!-- model delete-->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to take this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelAction">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmAction">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmUser1" name="frmUser1">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Name</label>
+                            <input type="text" name="name1" id="name1" class="form-control" placeholder="Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>User Name</label>
+                            <input type="text" name="username1" id="username1" class="form-control" placeholder="User Name" required>
+                        </div>
+                        <div class="form-group col">
+                            <label>Password</label>
+                            <input type="password" name="password1" id="password1" class="form-control" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Phone Number</label>
+                            <input type="text" name="phonenumber1" id="phonenumber1" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group col">
+                            <label>Birthday</label>
+                            <input type="date" name="birthday1" id="birthday1" class="form-control" placeholder="Birthday" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Gender</label>
+                            <select class="form-control gender1" name="gender1">
+
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label>Status</label>
+                            <select class="form-control status1" name="status1">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>Address</label>
+                            <input type="text" name="address1" id="address1" class="form-control" placeholder="Address" required>
+                        </div>
+                        <div class="form-group col">
+                            <label>Role</label>
+                            <select class="form-control role1" name="role1">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="update" > Update</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="container">
+            <form id="frmUser" name="frmUser">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="User Name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" name="phonenumber" id="phonenumber" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Birthday</label>
+                            <input type="date" name="birthday" id="birthday" class="form-control" placeholder="Birthday" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select class="form-control gender" name="gender">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control status" name="status">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Address" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select class="form-control role" name="role">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" align="right">
+                    <button type="submit" class="btn btn-info" id="save">Add</button>
+                    <button type="button" class="btn btn-warning" id="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="panel-body">
+            <table   class="table table-bordered"
+                   cellpadding="0" cellspacing="0" width="100%">
+                <thead>
+                <tr style="text-align: center; background-color: yellow">
+                    <th>ID </th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>Birthday</th>
+                    <th>Status</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="lst-user">
+
+                </tbody>
+            </table>
+            <div class="pagination" style="text-align: center;">
+                <button id="prevPageBtn" class="btn btn-primary">Previous</button>
+                <span id="currentPage" style="margin: 0 10px;"></span>
+                <button id="nextPageBtn" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="ajax/admin/users.js"></script>
+</div>
+
+
+</body>
+
+</html>

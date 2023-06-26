@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/adminCss.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.min.js" integrity="sha512-GzbaI5EsNzdEUq6/2XLYpr1y9CUZRIVsUeWTAFgULtQa5jZ3Nug8i0nZKM6jp9NffBCZhymPPQFcF0DK+JkRpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.css" integrity="sha512-TH+vnrhByFI2RzNvaHSqt6EwoJ9Bp+yGAGTWp84qTuTx315ebnypxtyGHpli55Rm4N4J+N/0W9xAL2b5RZ2ZSA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light container-fluid bg-dark text-secondary">
+    <a class="navbar-brand text-secondary " href="/admin">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="btn btn-secondary ml-2 active" href="/adminManageProduct">
+        Manage Product
+    </a>
+    <a class="btn btn-secondary ml-2 active" href="/adminManageUser">
+        Manage User
+    </a>
+    <a class="btn btn-secondary ml-2 active" href="/admin">
+        Manage Categories
+    </a>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button id="logoutPage" class="btn btn-dark">
+                    LOG-OUT
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div layout:fragment="content">
+
+</div>
+
+<!-- copyright section start -->
+<footer class="container-fluid bg-dark text-secondary mt-5 pt-5">
+    <div class="copyright_section">
+        <div class="container">
+            <p class="copyright_text" style="text-color: white;">© 2023 Hoa - Hoang - Tinh - Kien </a></p>
+        </div>
+    </div>
+</footer>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+
+        $(document).on("click","#logoutPage",function () {
+            $.ajax({
+                url: "/apiUser/UserLogout",
+                method: "POST",
+                success: function (response) {
+                    const url = "/";
+                    window.location.href = url;
+                    toastr.success(response);
+                },
+                error: function () {
+                    alert("Can't Logout");
+                }
+            })
+        })
+    });
+</script>
+</body>
+</html>

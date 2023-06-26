@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/_adminLayout}">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Manage Products</title>
+</head>
+<body>
+<div layout:fragment="content">
+<!-- model delete-->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to take this action?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelAction">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmAction">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- The modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productModalLabel">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmProduct1" name="frmProduct1" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Name Product</label>
+            <input type="text" name="nameProduct1" id="nameProduct1" class="form-control" placeholder="Product Name" size="30px" required>
+          </div>
+          <div class="form-group">
+            <label>Brand</label>
+            <input type="text" name="Brand1" id="Brand1" class="form-control" placeholder="Brand" size="30px" required>
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" name="Price1" id="Price1" class="form-control" placeholder="Price" size="30px" required>
+          </div>
+          <div class="form-group">
+            <label>Categories</label>
+            <select class="form-control lst-categories1"></select>
+          </div>
+          <div class="form-group">
+            <input type="file" name="imageProduct1" id="imageProduct1" accept="image/*">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"  id="update">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="container">
+
+      <form id="frmProduct" name="frmProduct" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Name Product</label>
+          <input type="text" name="nameCategory" id="nameProduct" class="form-control" placeholder="Product Name" size="30px" required>
+        </div>
+        <div class="form-group">
+          <label>Brand</label>
+          <input type="text" name="Brand" id="Brand" class="form-control" placeholder="Brand" size="30px" required>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="text" name="Price" id="Price" class="form-control" placeholder="Price" size="30px" required>
+        </div>
+        <div class="form-group">
+          <label>Categories</label>
+          <select class="form-control lst-categories"></select>
+        </div>
+        <div class="form-group">
+          <input type="file" name="imageProduct" id="imageProduct" accept="image/*">
+        </div>
+        <div class="form-group" align="right">
+          <button type="submit" class="btn btn-info" id="save" >Add</button>
+          <button type="button" class="btn btn-warning" id="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="panel-body">
+      <table  class="table table-bordered" cellpadding="0" cellspacing="0" width="100%">
+        <thead>
+        <tr style="text-align: center; background-color: yellow">
+          <th>ID </th>
+          <th>Name </th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Image</th>
+          <th>Create Date</th>
+          <th>Update Date</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="lst-product">
+
+        </tbody>
+      </table>
+      <div class="pagination" style="text-align: center;">
+        <button id="prevPageBtn" class="btn btn-primary">Previous</button>
+        <span id="currentPage" style="margin: 0 10px;"></span>
+        <button id="nextPageBtn" class="btn btn-primary">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="/ajax/admin/products.js"></script>
+</div>
+</body>
+
+</html>

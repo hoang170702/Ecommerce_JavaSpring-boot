@@ -1,0 +1,41 @@
+body {
+    height: 100vh;
+}
+
+nav{
+    margin-bottom: 20px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+.nav-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.nav-select:focus {
+    outline: none;
+    border-color: #999;
+}
+
+.nav-select option {
+    background-color: #fff;
+    color: #333;
+}

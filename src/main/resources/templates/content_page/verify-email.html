@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Email Verification</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h1>Email Verification</h1>
+  <div id="verification-status"></div>
+
+  <script th:inline="javascript">
+    $(document).ready(function() {
+      // Lấy thông tin token và email từ URL
+      var urlParams = new URLSearchParams(window.location.search);
+      var token = urlParams.get('token');
+      var email = urlParams.get('email');
+
+      // Gửi request AJAX để xác thực email
+      $.ajax({
+        type: "POST",
+        url: "/verify-email",
+        data: {
+          token: token,
+          email: email
+        },
+        success: function(response) {
+          $("#verification-status").text(response);
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    });
+  </script>
+
+</div>
+</body>
+</html>
